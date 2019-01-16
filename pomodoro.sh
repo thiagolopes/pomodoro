@@ -33,7 +33,9 @@ function countdown {
 
 while true; do
     echo "icon:player_play" >&3
+    notify-send --icon=player_play 'Pomodoro' 'Work Hard!'
     $(countdown 3 $WORK_TIME "Work Hard!")
     echo "icon:player_stop" >&3
+    notify-send --icon=player_stop 'Pomodoro' 'Time Break!'
     $(countdown 3 $BREAK_TIME "Time Break!")
 done
