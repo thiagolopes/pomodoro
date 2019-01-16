@@ -22,7 +22,7 @@ yad --notification --kill-parent --listen \
 
 function countdown {
     LIFE_TIME=$(expr $SECONDS + $2)
-
+    printf "$3\tStared in: $(date -u +%T)\tDuration: $(date -d@$(expr $LIFE_TIME - $SECONDS) -u +%H:%M:%S) \n" >&2
     while [ $SECONDS -lt $LIFE_TIME ];
     do
         TIME_LEFT=$(date -d@$(expr $LIFE_TIME - $SECONDS) -u +%H:%M:%S)
