@@ -31,11 +31,24 @@ function countdown {
     done
 }
 
+function iteration {
+        echo "icon:player_play" >&3
+        notify-send --icon=player_play 'Pomodoro' 'Work Hard!'
+        ffplay -nodisp -autoexit ./sounds/work.wav >/dev/null 2>&1 &
+        $(countdown 3 $WORK_TIME "Work Hard!")
+
+        echo "icon:player_stop" >&3
+        notify-send --icon=player_stop 'Pomodoro' 'Time Break!'
+        ffplay -nodisp -autoexit -volume 30 ./sounds/break.wav >/dev/null 2>&1 &
+        $(countdown 3 $BREAK_TIME "Time Break!")
+}
+
 while true; do
-    echo "icon:player_play" >&3
-    notify-send --icon=player_play 'Pomodoro' 'Work Hard!'
-    $(countdown 3 $WORK_TIME "Work Hard!")
-    echo "icon:player_stop" >&3
-    notify-send --icon=player_stop 'Pomodoro' 'Time Break!'
-    $(countdown 3 $BREAK_TIME "Time Break!")
+    for i in {1..3};
+    do
+        iteration
+    done
+    BREAK_TIME=1800
+    iteration
+    BREAK_TIME=300
 done
