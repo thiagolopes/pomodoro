@@ -39,12 +39,12 @@ function countdown {
 function iteration {
     echo "$ICON_START" >&3
     $(notify-send --icon=player_play "$NOTIFICATION_TITLE" "$BODY_POMODORO")
-    ffplay -nodisp -autoexit ./sounds/work.wav >/dev/null 2>&1 &
+    aplay ./sounds/work.wav >/dev/null 2>&1 &
     $(countdown 3 $WORK_TIME "$BODY_POMODORO")
 
     echo "$ICON_STOP" >&3
     $(notify-send --icon=player_stop "$NOTIFICATION_TITLE" "$BODY_BREAK")
-    ffplay -nodisp -autoexit -volume 30 ./sounds/break.wav >/dev/null 2>&1 &
+    aplay ./sounds/break.wav >/dev/null 2>&1 &
     $(countdown 3 $BREAK_TIME "$BODY_BREAK")
 }
 

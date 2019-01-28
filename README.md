@@ -12,7 +12,6 @@ reference: [Wikipedia](https://en.wikipedia.org/wiki/Pomodoro_Technique)
 ## requirements
 
 - `yad` : used to create icons notifications
-- `ffmpeg` : used to sound notifications
 - `notify-sent` (libnotify-bin): used to create system notifications
 
 ## run
