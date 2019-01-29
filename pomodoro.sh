@@ -27,7 +27,9 @@ yad --notification --kill-parent --listen \
 
 function countdown {
     LIFE_TIME=$(expr $SECONDS + $2)
+
     printf "$3\tStared in: $(date -u +%T)\tDuration: $(date -d@$(expr $LIFE_TIME - $SECONDS) -u +%H:%M:%S) \n" >&2
+
     while [ $SECONDS -lt $LIFE_TIME ];
     do
         TIME_LEFT=$(date -d@$(expr $LIFE_TIME - $SECONDS) -u +%H:%M:%S)
@@ -49,10 +51,10 @@ function iteration {
 }
 
 while true; do
-    for i in {1..3};
-    do
+    for i in {1..3}; do
         iteration
     done
+
     BREAK_TIME=1800
     iteration
     BREAK_TIME=300
